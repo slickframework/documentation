@@ -1,0 +1,22 @@
+{
+  "name": "SlickDocumentation",
+  "version": "1.1.0",
+  "authors": [
+    "Filipe Silva <silvam.filipe@gmail.com>"
+  ],
+  "description": "Slick-Framework documentation site",
+  "license": "MIT",
+  "homepage": "slick-framework.com",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass-official": "~3.3.3",
+    "fontawesome": "~4.3.0"
+  }
+}

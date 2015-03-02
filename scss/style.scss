@@ -1,0 +1,33 @@
+@import "bootstrap";
+@import "font-awesome";
+@import "variables";
+@import "bootswatch";
+
+body {
+  padding-top: 70px;
+}
+.navbar-brand {
+  padding: 0 15px;
+}
+
+.jumbotron {
+  text-align: center;
+  background-color: transparent;
+}
+.jumbotron .btn {
+  padding: 14px 24px;
+  font-size: 21px;
+}
+
+section.features {
+  h2 {
+    border-bottom: 1px solid $legend-border-color;
+    padding-bottom: 8px;
+  }
+}
+section.latest-news {
+  h2 {
+    border-bottom: 1px solid $legend-border-color;
+    padding-bottom: 8px;
+  }
+}
