@@ -1,0 +1,14 @@
+# Source file or directory to parse
+source: ../Framework/src/Slick
+# Directory where to save the generated documentation
+destination: source/api/
+
+# Title of generated documentation
+title: Slick-Framework
+
+# Template config file
+templateConfig: doc-templates/slick-theme/config.neon
+
+# Generate documentation for methods and properties with given access level
+accessLevels: [public]
+

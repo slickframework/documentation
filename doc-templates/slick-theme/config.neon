@@ -1,0 +1,40 @@
+resources:
+    resources: resources
+templates:
+	overview:
+		filename: index.html
+		template: overview.latte
+	combined:
+		filename: combined.js
+		template: combined.js.latte
+	elementlist:
+		filename: elementlist.js
+		template: elementlist.js.latte
+	404:
+		filename: 404.html
+		template: 404.latte
+	package:
+		filename: package-%s.html
+		template: package.latte
+	namespace:
+		filename: namespace-%s.html
+		template: namespace.latte
+	class:
+		filename: class-%s.html
+		template: class.latte
+	constant:
+		filename: constant-%s.html
+		template: constant.latte
+	function:
+		filename: function-%s.html
+		template: function.latte
+	source:
+		filename: source-%s.html
+		template: source.latte
+	tree:
+		filename: tree.html
+		template: tree.latte
+	deprecated:
+		filename: deprecated.html
+		template: empty.latte
+templatesPath:
