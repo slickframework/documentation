@@ -3,6 +3,7 @@ layout: base
 activeMenu: getting-started
 title: Getting started
 ---
+{% import 'helpers.twig' as html %}
 Slick Cache Component
 =====================
 
@@ -161,9 +162,20 @@ Return | Description
 ------ | -----------
 Slick\Cache\DriverInterface | A `DriverInterface` instance for chaining method calls.
 
+{% set content %}
+    {{ html.api_code('public DriverInterface DriverInterface::erase(string $key)') }}
+    Erase the value stored with a given key. You can use the “?” and “*"
+    wildcards to delete all matching keys. The "?" means a place holders
+    for one unknown character, the "*” is a place holder for various.
+{% endset %}
+
+{{ html.api_block('Slick\Cache\DriverInterface::erase()', content) }}
 
 <div class="alert alert-warning" role="alert">
-    ### warning
+    <h4>
+        <i class="fa fa-exclamation "></i>
+        Careful
+    </h4>
     
     The use of “?” and “\*” placeholder is only implemented in the drivers that are
     provided by Slick cache component. If you create your own cache
@@ -172,14 +184,12 @@ Slick\Cache\DriverInterface | A `DriverInterface` instance for chaining method c
 </div>
 
  
-<div class="alert alert-info" role="alert">
-    <h4>tip</h4>
-   
+{{ html.note('
     If you are implementing your own cache driver and want to have the “?” and “\*”
     placeholders search you can extend <code>Slick\Cache\Driver\AbstractDriver</code> witch uses the
     <code>DriverInterface::get()</code> and <code>DriverInterface::set()</code> methods to achieve the wildcards
     key search feature.
-</div>
+') }}
 
 [Composer]: https://getcomposer.org/
 

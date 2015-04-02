@@ -1,0 +1,25 @@
+{% macro note(text, name='Note') %}
+    <div class="alert alert-info" role="alert">
+        <h4>
+            <i class="fa fa-info"></i>
+            {{ name }}
+        </h4>
+
+        {{ text|raw }}
+    </div>
+{% endmacro %}
+
+{# API DOC Helpers #}
+{% macro api_block(name, content) %}
+    <div class="panel panel-default">
+        <div class="panel-body api-doc">
+            <h3>{{ name|raw }}</h3>
+            <hr>
+            {{ content|raw }}
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro api_code(content, lang='php') %}
+    <pre><code class="{{ lang|raw }}">{{ content|raw }}</code></pre>
+{% endmacro %}
