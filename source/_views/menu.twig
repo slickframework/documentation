@@ -17,7 +17,7 @@
             <ul class="nav navbar-nav">
                 <li class="{{ page.activeMenu == 'home' ? 'active' }}"><a href="{{ site.url }}/">Home</a></li>
                 <li class="{{ page.activeMenu == 'getting-started' ? 'active' }}"><a href="{{ site.url }}/getting-started">Getting started</a></li>
-                <li><a href="#about">Documentation</a></li>
+                <li class="{{ page.activeMenu == 'documentation' ? 'active' }}"><a href="#about">Documentation</a></li>
                 <li><a href="{{ site.url }}/api/index.html">API</a></li>
             </ul>
 

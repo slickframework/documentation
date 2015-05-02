@@ -1,29 +1,10 @@
 ---
-layout: base
+layout: home
 title: Home
-generator: pagination
-pagination:
-    max_per_page: 3
-use:
-    - posts
 activeMenu: home
 ---
 
 <!-- Main component for a primary marketing message or call to action -->
-<div class="jumbotron">
-    <h1>
-        <img src="{{ site.url }}/images/logo.png" alt="Slick logo">
-        Slick Framework
-    </h1>
-    <p>Slick is a PHP 5.4+ MVC framework and tool set that aim to be simple robust and cool to work with.<br>
-        The goal is to create a PHP tool set that can be used to develop applications with agile methodologies like SCRUM or KANBAN in mind.</p>
-    <p>
-        <a class="btn btn-lg btn-success" href="{{ site.url }}" role="button">
-            <i class="fa fa-graduation-cap"></i>
-            Getting started
-        </a>
-    </p>
-</div>
 
 <section class="features">
     <header>
@@ -32,12 +13,32 @@ activeMenu: home
     <main>
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                <h3>Easy configuration</h3>
-                <p>You use plain PHP arrays to set your application configuration. Extend it if you want to implement a different configuration format or service.</p>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong>Easy configuration</strong>
+                    </div>
+                    <div class="panel-body">
+                        <p>
+                            You use plain PHP arrays to set your application configuration.
+                            Extend it if you want to implement a different configuration format
+                            or service.
+                        </p>
+                    </div>
+                </div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                <h3>Form building</h3>
-                <p>Simply create a Form object, define its field elements, validate and filter chains and render it in your view. All HTML will be created for you.</p>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong>Form building</strong>
+                    </div>
+                    <div class="panel-body">
+                        <p>
+                            Simply create a Form object, define its field elements,
+                            validate and filter chains and render it in your view.
+                            All HTML will be created for you.
+                        </p>
+                    </div>
+                </div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 <h3>Simple ORM</h3>
@@ -59,32 +60,5 @@ activeMenu: home
                 <p>Slick uses the <a href="http://codeception.com">Codeception Test Framework</a> on all its tests.</p>
             </div>
         </div>
-    </main>
-</section>
-
-<section class="latest-news">
-    <header>
-        <h2>Latest news</h2>
-    </header>
-    <main>
-        {% for post in page.pagination.items %}
-        <article>
-            <header>
-                <h2><a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a></h2>
-            </header>
-            <div>
-                {{ post.blocks.content|raw }}
-            </div>
-            {% if post.meta.tags %}
-            <p class="tags">
-                Tags:
-                {% for tag in post.meta.tags %}
-                <a href="{{ site.url }}/blog/tags/{{ tag|url_encode(true) }}">{{ tag }}</a>{% if not loop.last %}, {% endif %}
-                {% endfor %}
-            </p>
-            {% endif %}
-        </article>
-        {% endfor %}
-
     </main>
 </section>

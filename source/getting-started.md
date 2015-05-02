@@ -154,13 +154,13 @@ for one unknown character, the "*” is a place holder for various
 public DriverInterface DriverInterface::erase(string $key)
 ```    
 
-Parameters | Type | Description
----------- | ---- | -----------
-$key | string | The key where value was stored
+| Parameters | Type     | Description                    |
+|------------|----------|--------------------------------|
+| *$key*       | `string` | The key where value was stored |
 
 Return | Description
 ------ | -----------
-Slick\Cache\DriverInterface | A `DriverInterface` instance for chaining method calls.
+`Slick\Cache\DriverInterface` | A `DriverInterface` instance for chaining method calls.
 
 {% set content %}
     {{ html.api_code('public DriverInterface DriverInterface::erase(string $key)') }}

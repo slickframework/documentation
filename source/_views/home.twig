@@ -11,7 +11,7 @@
     <!-- Place favicon.ico in the root directory -->
 
     <link rel="stylesheet" href="{{ site.url }}/css/style.css">
-    <link rel="stylesheet" href="{{ site.url }}/js/vendor/highlightjs/styles/tomorrow-night.css" />
+    <link rel="stylesheet" href="{{ site.url }}/js/vendor/highlightjs/styles/idea.css" />
     <script src="{{ site.url }}/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body>
@@ -21,19 +21,28 @@
 
 {% include 'menu' %}
 
-<div class="container">
-    <div class="row">
-        <div class="col-lg-3 col-md-3 hidden-xs hidden-sm">
-            {% include 'documentation-menu.twig' %}
-        </div>
-        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
-            {% block content_wrapper %}{% block content %}
-                <p>Hello world! This is HTML5 Boilerplate.</p>
-            {% endblock %}{% endblock %}
-        </div>
-
+<div class="jumbotron">
+    <div class="container">
+        <h1>
+            <img src="{{ site.url }}/images/logo.png" alt="Slick logo">
+            Slick Framework
+        </h1>
+        <p>Slick is a PHP 5.4+ tool set that aim to be simple robust and cool to work with.<br>
+            The goal is to create a PHP tool set that can be used to develop applications with
+            agile methodologies in mind.</p>
+        <p>
+            <a class="btn btn-lg btn-success" href="{{ site.url }}" role="button">
+                <i class="fa fa-graduation-cap"></i>
+                Getting started
+            </a>
+        </p>
     </div>
+</div>
+<div class="container">
     <!-- Add your site or application content here -->
+    {% block content_wrapper %}{% block content %}
+        <p>Hello world! This is HTML5 Boilerplate.</p>
+    {% endblock %}{% endblock %}
 
 </div>
 <footer>
@@ -44,6 +53,7 @@
         </p>
     </div>
 </footer>
+
 <script src="{{ site.url }}/js/jquery.min.js"></script>
 <script src="{{ site.url }}/js/bootstrap.min.js"></script>
 <script src="{{ site.url }}/js/main.js"></script>
