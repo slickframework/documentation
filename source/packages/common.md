@@ -38,7 +38,7 @@ class Car extends Base
 }
 ```
 
-This is a really simple class that has one property. So lets create a car using 
+This is a really simple class that has two properties. So lets create a car using 
 `Base` class constructor.
 
 ### Creating objects
@@ -131,7 +131,7 @@ the `Car::$model` property and a setter for that property. I used the PHP type
 hinting feature to prevent setting the model with a different type.
 
 ```php
-// This will throw an exception
+// This will trigger a fatal error
 $mazda->model = "M6";
 
 // This will work just fine
@@ -184,8 +184,8 @@ information about each access annotation.
 
 | Annotation   | Description | Behavior |
 |--------------|-------------|----------|
-| `@read`      | You can read the property value .  | An `Slick\Common\Exception\ReadOnlyException` exception is thrown if you try to set a value. |
-| `@write`     | You can change the property value. | An `Slick\Common\Exception\WriteOnlyException` exception is thrown if you try to read a value. |
+| `@read`      | You can only read the property value.   | An `Slick\Common\Exception\ReadOnlyException` exception is thrown if you try to set a value. |
+| `@write`     | You can only set the property value. | An `Slick\Common\Exception\WriteOnlyException` exception is thrown if you try to read a value. |
 | `@readwrite` | You can get or change the property value. | - |
 
 <div class="alert alert-warning" role="alert">
@@ -200,6 +200,79 @@ information about each access annotation.
     exception will be thrown.
 </div>
 
+<div class="alert alert-info" role="alert">
+    <h4>
+        <i class="fa fa-info "></i>
+        Note
+    </h4>
+    
+    When working with modern IDEs you will have warnings about accessing
+        properties that are <code>protected</code> or methods that aren't defined.
+        To avoid this errors you can add dock block tags to your class like
+        <code>@property</code>, <code>@method</code>, <code>@property-read</code>
+        and <code>@property-write</code>.
+        <br>
+        Please refer to <a target="_blank" href="http://manual.phpdoc.org/HTMLSmartyConverter/PHP/phpDocumentor/tutorial_tags.property.pkg.html">
+        phpDocumentor manual page</a> for more information about those tags.
+</div>
+
+### Use it in any class
+
+Some times it is not possible to extent from `Slick\Common\Base` class because you are already
+extending an existing class. In those cases if you want to use the methods defined
+in `Slick\Common\Base` you can use the `Slick\Common\BaseMethods` trait that apart
+from constructor, all other functionality is present (this trait is used by
+`Slick\Common\Base` class already).
+
+In addition the trait has the `Slick\Common\BaseMethods::hydrate()` method that works
+like the `Slick\Common\Base::__construct()` constructor accepting an associative array
+or an object to set property values.
+
+Take a look at an example:
+
+```php
+<?php
+
+use Slick\Common\BaseMethods;
+
+class User extends Model
+{
+    /**
+     * @readwrite
+     * @var string
+     */
+    protected $name;
+    
+    /**
+     * @readwrite
+     * @var string
+     */
+    protected $email;
+    
+    use BaseMethods;
+}
+
+$adapter = new Adapter('default');
+$user = new User($adapter);
+
+$user->hydrate(['email' => 'joe@example.com', 'name' => 'joe']);
+
+print $user->getEmail(); // Will print out "joe@example.com"
+
+```
+
+<div class="alert alert-info" role="alert">
+    <h4>
+        <i class="fa fa-info "></i>
+        Note about performance
+    </h4>
+    
+    Although the usage became simplified by using <code>Slick\Common\Base</code>
+    class or the <code>Slick\Common\BaseMethods</code> trait keep in mind that
+    extra work and class inspection is done by those methods tho perform
+    this features. We think about it when developing these classes and we try
+    to keep it at the best performance we could. 
+</div>
 
 
 {% include 'disqus' %}
