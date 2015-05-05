@@ -1,5 +1,5 @@
 # Source file or directory to parse
-source: ../Framework/library/Slick
+source: ../Framework/library
 # Directory where to save the generated documentation
 destination: source/api/
 
