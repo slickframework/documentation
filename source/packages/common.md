@@ -15,7 +15,7 @@ develop on top of and help you remove the tedious work of create getters and
 setters, allowing read and/or write access to the properties and inspect
 classes and properties.
 
-<a name="base-class"></a>
+<a id="base-class"></a>
 
 ## The `Base` class
 
