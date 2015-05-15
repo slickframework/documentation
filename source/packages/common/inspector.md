@@ -2,9 +2,12 @@
 layout: base
 activeMenu: documentation
 title: Slick common package - Inspector
+contentsMenu: common/inspector
 ---
 
 # The class inspector
+
+---
 
 `slick/Common` package comes with a simple class inspector utility. It is used
 to retrieve class information data such as methods, properties, comments and

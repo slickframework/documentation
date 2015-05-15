@@ -2,9 +2,12 @@
 layout: base
 activeMenu: documentation
 title: Slick common package
+contentsMenu: common/base-menu
 ---
 
 # Common Package
+
+---
 
 Slick common package contains a set of useful classes and traits that are used
 by almost every class in the entire Slick library. They form a solid base to
@@ -12,7 +15,9 @@ develop on top of and help you remove the tedious work of create getters and
 setters, allowing read and/or write access to the properties and inspect
 classes and properties.
 
-## Basic usage
+<a name="base-class"></a>
+
+## The `Base` class
 
 For a simple understanding of how easy is to work with property assignment and
 property value retrieving lets create a basic class:
@@ -41,6 +46,8 @@ class Car extends Base
 This is a really simple class that has two properties. So lets create a car using 
 `Base` class constructor.
 
+<a id="creating-objects"></a>
+
 ### Creating objects
 
 The `Slick\Common\Base::__construct()` method accepts only one argument and it
@@ -58,6 +65,9 @@ constructor as in the following example.
 $data = (object) ['model' => 'M6'];
 $mazda = new Car($data);
 ```
+
+<a id="reading-writing-property-values"></a>
+
 ### Reading/Writing property values
 
 Now that we have our `Car` object lets change its properties.
@@ -176,6 +186,8 @@ var_dump($mazda->isManualShifting()); // This will output (Bool) True
     the PHP magic methods and wont be handled.
 </div>
 
+<a id="property-access"></a>
+
 ### The right access to properties
 
 Has I mention before, `Slick\Common\Base` manages the read/write access to
@@ -215,6 +227,8 @@ information about each access annotation.
         Please refer to <a target="_blank" href="http://manual.phpdoc.org/HTMLSmartyConverter/PHP/phpDocumentor/tutorial_tags.property.pkg.html">
         phpDocumentor manual page</a> for more information about those tags.
 </div>
+
+<a id="any-class"></a>
 
 ### Use it in any class
 

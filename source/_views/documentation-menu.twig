@@ -1,14 +1,17 @@
-<div class="affix">
-    <h3>Table of contents</h3>
+<div class="affix" data-spy="affix">
+    <br>
+    <label for="chapter-selector">Select a chapter</label><br>
+    <select class="selectpicker" id="chapter-selector">
+        <optgroup label="Common Package">
+            <option value="/packages/common" {{ page.contentsMenu == 'common/base-menu' ? 'selected' }}>The Base class</option>
+            <option value="/packages/common/inspector" {{ page.contentsMenu == 'common/inspector' ? 'selected' }}>Inspecting classes and objects</option>
+        </optgroup>
+    </select>
+    {% if page.contentsMenu %}
     <hr>
-    <ul class="">
-        <li><a href="#">Installation</a></li>
-        <li class="active">
-            <a href="#slick-packages">Slick Packages</a>
-            <ul class="">
-                <li class="active"><a href="getting-started">Common</a></li>
-            </ul>
-        </li>
-
-    </ul>
+    <strong>Table of contents</strong>
+    <div id="contents-menu-container">
+        {% include page.contentsMenu %}
+    </div>
+    {% endif %}
 </div>
