@@ -2,7 +2,16 @@
 layout: base
 activeMenu: documentation
 title: Slick common package - Annotations
+contentsMenu: common/annotations
+previous:
+    url: /packages/common/inspector
+    title: Inspecting classes and objects
+next:
+    url: /packages/common/custom-annotations
+    title: Custom annotations
 ---
+
+<div id="annotations"></div>
 
 # Annotations
 
@@ -150,6 +159,8 @@ In the following table you can see all possible values for a given parameter:
 &nbsp;`*`: Must be a valid JSON formatted string<br>
 `**`: No value will default to boolean true
 
+<div id="using"></div>
+
 ## Using an Annotation
 
 Now that you have a better understanding of an Annotation and how to set it in
@@ -225,5 +236,3 @@ $futureCar->setEngineState('charging');
 $myCar->setEngineState('charging');
 
 ```
-
-{% include 'disqus' %}

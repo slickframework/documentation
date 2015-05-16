@@ -30,6 +30,31 @@
             {% block content_wrapper %}{% block content %}
                 <p>Hello world! This is HTML5 Boilerplate.</p>
             {% endblock %}{% endblock %}
+            {% if (page.next or page.previous) %}
+                <hr>
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                        {% if page.previous %}
+                        <a href="{{ page.previous.url }}">
+                            <i class="fa fa-angle-double-left"></i>
+                            {{ page.previous.title }}
+                        </a>
+                        {% endif %}
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                        {% if page.next %}
+                        <a href="{{ page.next.url }}" class="pull-right">
+                            {{ page.next.title }}
+                            <i class="fa fa-angle-double-right"></i>
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+                <hr>
+            {% endif %}
+
+
+            {% include 'disqus' %}
         </div>
 
     </div>

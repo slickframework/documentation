@@ -3,7 +3,13 @@ layout: base
 activeMenu: documentation
 title: Slick common package
 contentsMenu: common/base-menu
+next:
+    url: /packages/common/inspector
+    title: Inspecting classes and objects
+    
 ---
+
+<div id="creating-objects"></div>
 
 # Common Package
 
@@ -14,8 +20,6 @@ by almost every class in the entire Slick library. They form a solid base to
 develop on top of and help you remove the tedious work of create getters and
 setters, allowing read and/or write access to the properties and inspect
 classes and properties.
-
-<a id="base-class"></a>
 
 ## The `Base` class
 
@@ -46,8 +50,6 @@ class Car extends Base
 This is a really simple class that has two properties. So lets create a car using 
 `Base` class constructor.
 
-<a id="creating-objects"></a>
-
 ### Creating objects
 
 The `Slick\Common\Base::__construct()` method accepts only one argument and it
@@ -66,7 +68,7 @@ $data = (object) ['model' => 'M6'];
 $mazda = new Car($data);
 ```
 
-<a id="reading-writing-property-values"></a>
+<div id="reading-writing-property-values"></div>
 
 ### Reading/Writing property values
 
@@ -186,7 +188,7 @@ var_dump($mazda->isManualShifting()); // This will output (Bool) True
     the PHP magic methods and wont be handled.
 </div>
 
-<a id="property-access"></a>
+<div id="property-access"></div>
 
 ### The right access to properties
 
@@ -228,7 +230,7 @@ information about each access annotation.
         phpDocumentor manual page</a> for more information about those tags.
 </div>
 
-<a id="any-class"></a>
+<div id="any-class"></div>
 
 ### Use it in any class
 
@@ -287,6 +289,3 @@ print $user->getEmail(); // Will print out "joe@example.com"
     this features. We think about it when developing these classes and we try
     to keep it at the best performance we could. 
 </div>
-
-
-{% include 'disqus' %}

@@ -3,13 +3,22 @@ layout: base
 activeMenu: documentation
 title: Slick common package - Inspector
 contentsMenu: common/inspector
+previous:
+    url: /packages/common
+    title: The base class
+next:
+    url: /packages/common/annotations
+    title: Annotations 
+     
 ---
 
-# The class inspector
+<div id="overview"></div>
+
+# Inspecting classes and objects
 
 ---
 
-`slick/Common` package comes with a simple class inspector utility. It is used
+`Slick/Common` package comes with a simple class inspector utility. It is used
 to retrieve class information data such as methods, properties, comments and
 annotations you may have in your doc block comments. It uses the PHP
 `ReflectionClass` to get its data.
@@ -73,6 +82,8 @@ where you can retrieve information from.
     and reduces the amount of memory needed for large object collections.
 </div>
 
+<div id="class-elements"></div>
+
 ## Getting class elements
 
 ### `Inspector::getClassProperties()`
@@ -100,6 +111,8 @@ Retrieves the list of class method names
 Return     | Description
 ---------- | -----------
 `string[]` | An array of strings containing the class method names
+
+<div id="checking-class-elements"></div>
 
 ## Checking class elements
 
@@ -136,6 +149,8 @@ Checks if the property is defined in the inspected class
 Return    | Description
 --------- | -----------
 `boolean` | True if property is defined in the inspected class
+
+<div id="retrieving-class-annotations"></div>
 
 ## Retrieving class annotations
 
@@ -258,6 +273,9 @@ Return                                   | Description
 |-----------------------------------------||
 | `Slick\Common\Exception\InvalidArgumentException` | If you trie to retrieve annotations of an method that was not defined. |  
 
+
+<div id="class-reflection"></div>
+
 ## Getting the class reflection
 
 As I said before, `Slick\Common\Inspector` uses PHP `ReflectionClass` to
@@ -278,5 +296,3 @@ Return            | Description
 ------------------|-------------
 `ReflectionClass` | The reflection class used by inspector to retrieve class information.
 
-
-{% include 'disqus' %}

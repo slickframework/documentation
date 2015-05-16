@@ -5,6 +5,14 @@
         <optgroup label="Common Package">
             <option value="/packages/common" {{ page.contentsMenu == 'common/base-menu' ? 'selected' }}>The Base class</option>
             <option value="/packages/common/inspector" {{ page.contentsMenu == 'common/inspector' ? 'selected' }}>Inspecting classes and objects</option>
+            <option value="/packages/common/annotations" {{ page.contentsMenu == 'common/annotations' ? 'selected' }}>Annotations</option>
+            <option value="/packages/common/custom-annotations" {{ page.contentsMenu == 'common/custom-annotations' ? 'selected' }}>Custom annotations</option>
+            <option value="/packages/common/utilities" {{ page.contentsMenu == 'common/utilities' ? 'selected' }}>Utilities</option>
+        </optgroup>
+
+        <optgroup label="Database Package">
+            <option value="/packages/database" {{ page.contentsMenu == 'database/adapter' ? 'selected' }}>Database adapter</option>
+
         </optgroup>
     </select>
     {% if page.contentsMenu %}
