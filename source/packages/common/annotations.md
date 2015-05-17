@@ -212,9 +212,12 @@ class Car extends Base
         
     }
 }
+```
 
-// Lets define an electric car that has one more state: charging
+With our code in place lets define an electric car that has one more state: charging
 
+
+```php
 class ElectricCar extends Car
 {
 
