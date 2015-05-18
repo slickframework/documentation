@@ -13,6 +13,8 @@ next:
 
 # Custom annotations
 
+---
+
 Despite the basic annotations that you can use out of the box from `Slick\Common`
 package you can also create your own annotations to implement a specific need.
 `Slick\Common\AnnotationInterface` is a very simple interface that can work with
@@ -24,6 +26,8 @@ what you what you want.
 <div id="simple-example"></div>
 
 ## A simple example
+
+---
 
 One common use case for creating custom annotations is to define the default
 values for the annotation parameters. Lets create an example.

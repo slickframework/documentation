@@ -15,6 +15,8 @@ next:
 
 # Annotations
 
+---
+
 `slick/Common` package has a very simple annotations system that is used to
 handle the `@read`, `@write` and `@readwrite` annotations used by
 `slick\Common\BaseMethods` trait to define the access mode to protected 
@@ -54,6 +56,8 @@ Take a closer look to `Car::$engine` comment block to the `@default` tag that
 we have just added.
 
 ## Anatomy of an Annotation
+
+---
 
 An annotation is a simple doc block tag tar will be converted to an
 `Slick\Common\AnnotationInterface` when you run 
@@ -162,6 +166,8 @@ In the following table you can see all possible values for a given parameter:
 <div id="using"></div>
 
 ## Using an Annotation
+
+---
 
 Now that you have a better understanding of an Annotation and how to set it in
 your class, lets create a basic usage to make it clear on how to use
