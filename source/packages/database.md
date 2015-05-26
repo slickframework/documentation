@@ -193,3 +193,24 @@ Object (
     The <code>Adapter::query()</code> will throw an <code>Slick\Database\Exception\SqlQueryException</code>
     exception that you have to treat.
 </div>
+
+<div id="executing-queries"></div>
+
+## Executing queries
+
+If you want to execute queries without data return like deletes or inserts for
+example you can use the `Adapter::execute()` method that only will return the
+affected rows by the query command you provide.
+
+```php
+$sql = 'DELETE FROM fruit
+        WHERE calories < ? AND colour = ?';
+
+$affected = $adapter->execute($sql, [150, 'red']);
+
+print $affected; // will print out 3
+```
+
+This method has an identical signature than the `Adapter::query()` method where
+you can use a full string query or you can bind the parameters to placeholders
+in your query string.
