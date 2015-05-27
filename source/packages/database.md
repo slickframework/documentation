@@ -157,6 +157,24 @@ string with `Adapter::query()` method.
 This interface is very simple and only has one method to
 implement witch will be used by the adapter to retrieve the SQL query string.
 
+### `AdapterInterface::query()`
+___
+
+```php
+public RecordList query(string|SqlInterface $sql[, array $parameters = null]) 
+```
+
+Executes a SQL query and returns a record list
+
+ Parameters  | Type     | Description 
+-------------|----------|-------------
+ *`$sql`*   | `string|SqlInterface` |  A string containing the SQL query to perform or the equivalent SqlInterface object
+ *`$parameters`*   | `array` |  An array of values with as many elements as there are bound parameters in the SQL statement being executed
+ 
+Return    | Description
+--------- | -----------
+`RecordList` | The records that are queried in the SQL statement provided. Note that this list can be empty.
+
 ### Changing the fetch mode
 
 ---
@@ -198,6 +216,8 @@ Object (
 
 ## Executing queries
 
+---
+
 If you want to execute queries without data return like deletes or inserts for
 example you can use the `Adapter::execute()` method that only will return the
 affected rows by the query command you provide.
@@ -214,3 +234,107 @@ print $affected; // will print out 3
 This method has an identical signature than the `Adapter::query()` method where
 you can use a full string query or you can bind the parameters to placeholders
 in your query string.
+
+### `AdapterInterface::execute()`
+___
+
+```php
+public RecordList execute(string|SqlInterface $sql[, array $parameters = null]) 
+```
+
+Executes an SQL or DDL query and returns the number of affected rows
+
+ Parameters  | Type     | Description 
+-------------|----------|-------------
+ *`$sql`*   | `string|SqlInterface` |  A string containing the SQL query to perform or the equivalent SqlInterface object
+ *`$parameters`*   | `array` |  An array of values with as many elements as there are bound parameters in the SQL statement being executed
+ 
+Return    | Description
+--------- | -----------
+`integer` | The number of affected rows by executing the query.
+
+<div id="transactions"></div>
+
+## Database transactions
+
+---
+
+From the PHP manual, transactions...
+
+> "... offer 4 major features: Atomicity, Consistency, Isolation and Durability
+> (ACID). In layman's terms, any work carried out in a transaction, even if it
+> is carried out in stages, is guaranteed to be applied to the database safely,
+> and without interference from other connections, when it is committed.
+> Transactional work can also be automatically undone at your request (provided
+> you haven't already committed it), which makes error handling in your scripts
+> easier."
+
+`Slick\Database\Adapter\TransactionsAwareInterface` is designed to make used of
+transactions when the underlying driver supports it.
+
+Lets create a simple example:
+
+```php
+
+try {
+    $adapter->beginTransaction();
+    $adapter->execute("insert into staff (id, first, last) values (23, 'Joe', 'Bloggs')");
+    $adapter->execute(
+        "insert into salarychange (id, amount, changedate) 
+         values (:id, :amount, NOW())",
+         [
+            ':id' => 3,
+            ':amount' => 56000
+         ]
+    );
+    $adapter->commit();
+} catch(\Slick\Database\Exception $exp) {
+    $adapter->rollBack();
+    echo "Failed: " . $exp->getMessage();
+}
+
+```
+
+As not all database drivers support transactions you should check that the adapter
+you are using implements `Slick\Database\Adapter\TransactionsAwareInterface` that
+extends `Slick\Database\Adapter\AdapterInterface` and is specific for an adapter
+that used a driver with transactions support.
+
+### `TransactionsAwareInterface::beginTransaction()`
+___
+
+```php
+public boolean beginTransaction() 
+```
+
+Initiates a transaction a database transaction
+
+Return    | Description
+--------- | -----------
+`boolean` | TRUE on success or FALSE on failure.
+
+### `TransactionsAwareInterface::commit()`
+___
+
+```php
+public boolean commit() 
+```
+
+Commits a transaction
+
+Return    | Description
+--------- | -----------
+`boolean` | TRUE on success or FALSE on failure.
+
+### `TransactionsAwareInterface::rollBack()`
+___
+
+```php
+public boolean rollBack() 
+```
+
+Rolls back a transaction
+
+Return    | Description
+--------- | -----------
+`boolean` | TRUE on success or FALSE on failure.
