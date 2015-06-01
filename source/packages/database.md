@@ -1,7 +1,7 @@
 ---
 layout: base
 activeMenu: documentation
-title: Slick database package
+title: Slick database package - Adapter
 contentsMenu: database/adapter
 next:
     url: /packages/database/sql
