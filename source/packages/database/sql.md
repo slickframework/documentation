@@ -4,8 +4,8 @@ activeMenu: documentation
 title: Slick database package - SQL queries
 contentsMenu: database/sql
 next:
-    url: /packages/database/ddl
-    title: DDL queries
+    url: /packages/database/crud
+    title: Insert, update and delete
 previous:
     url: /packages/database
     title: Database Adapter
@@ -410,6 +410,7 @@ The above code will produce the following SQL query:
 
 ```sql
 SELECT id, name, mail
+FROM users
 ORDER BY name ASC;
 ```
 
@@ -430,3 +431,180 @@ Parameters      | Type     | Description
 Return   | Description  
 ---------| -----------
 `Select` | A `Select` SQL query object
+
+
+<div id="limit"></div>
+
+## Limited results
+
+---
+
+Limit your query results is very simple, just add the total rows and the offset
+to the query:
+
+```php
+$select->limit(12, 24);
+```
+The above code will produce the following SQL query:
+
+```sql
+## MySQL example
+SELECT id, name, mail
+FROM users
+LIMIT 24, 12;
+```
+
+### `Select::limit()`
+
+---
+
+```php
+public Select limit(int $rows[, int $offset = 0])
+```
+
+Sets query limit and offset values.
+
+Parameters     | Type     | Description 
+---------------|----------|-------------
+ *`$rows`*     | `int` | The number of rows to retrieve
+ *`$offset`*   | `int` | The offset value for start retrieving
+ 
+Return   | Description  
+---------| -----------
+`Select` | A `Select` SQL query object
+
+
+<div id="count"></div>
+
+## Counting rows
+
+---
+
+Now is time to retrieve rows from database and the `Slick\Database\Sql\Select` has
+3 methods to retrieve the rows for current set SQL clauses: `count`, `first` and `all`.
+I will start by the `Select::Count()` witch is often used to paginate database results.
+
+Check out this code:
+
+```php
+use Slick\Database\Sql;
+
+$totalRows = Sql::create($adapter)
+    ->select('users')
+    ->count();
+```
+
+The above code will produce the following SQL query:
+
+```sql
+SELECT COUNT(*) AS total
+FROM users;
+```
+
+The `Select::count()` will execute the query and return the total rows count.
+
+### `Select::count()`
+
+---
+
+```php
+public int count()
+```
+
+Counts all records matching this select query
+
+Return   | Description  
+---------| -----------
+`int` | The total rows count for current query.
+
+
+<div id="all"></div>
+
+## Get all records
+
+---
+
+Now that we know how to count the records in a given select query it is time
+to retrieve the matching records for it. Similarly to the `Select::count()`
+method you just call the `Select::all()` method to retrieve _all_ records.
+
+Take a look:
+
+```php
+use Slick\Database\Sql;
+
+$users = Sql::create($adapter)
+    ->select('users')
+    ->limit(15)
+    ->all();
+```
+
+The above code will produce the following SQL query:
+
+```sql
+## MySQL example
+SELECT * AS total
+FROM users
+LIMIT 15;
+```
+
+The `Select::all()` will execute the query and return the matching rows
+as a `Slick\Database\RecordList` object that you can traverse to rich your data.
+
+### `Select::all()`
+
+---
+
+```php
+public RecordList all()
+```
+
+Retrieve all records matching this select query
+
+Return   | Description  
+---------| -----------
+`Slick\Database\RecordList` | The traversable list of records matching the query
+
+
+<div id="first"></div>
+
+## Get first record
+
+---
+
+Times are that you only need the first matching record of your query. This can be
+done with the `Select::first()` method that is similar to `Select::all()` method
+except that the first one has a forced `LIMIT 1` clause before query is executed.
+
+```php
+use Slick\Database\Sql;
+
+$user = Sql::create($adapter)
+    ->select('users')
+    ->first();
+```
+
+The above code will produce the following SQL query:
+
+```sql
+## MySQL example
+SELECT * AS total
+FROM users
+LIMIT 1;
+```
+
+The `Select::first()` will execute the query and return the first matching row.
+
+### `Select::first()`
+
+---
+
+```php
+public array|object first()
+```
+
+Retrieve first record matching this select query
+
+Return   | Description  
+---------| -----------
+`array|object` | The first matching record
