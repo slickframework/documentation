@@ -123,7 +123,7 @@ Return   | Description
 ---
 
 ```php
-public Insert execute()
+public int execute()
 ```
 
 Executes an SQL or DDL query and returns the number of affected rows
