@@ -88,3 +88,47 @@ returning the predictable matches.
 Return       | Description
 ------------ | -----------
 `array|null` | An array with matches from the given string. If no match is found, null will be returned.
+
+
+### `Text::camelCaseToSeparator()`
+___
+
+```php
+public static string camelCaseToSeparator(string $text[, string $sep = ' '])
+```
+
+Converts camel case strings to words separated by provided string.
+
+ Parameters   | Type     | Description 
+--------------|----------|-------------
+ *`$text`*  | `string` | The text to evaluate.
+ *`$sep`* | `string` | The separator (or glue) for the words
+
+Return       | Description
+------------ | -----------
+`string` | An lowercase string where camelCase words are concatenated with provided separator.
+
+<div id="array"></div>
+
+## Array methods utility
+
+---
+
+`Slick\Common\Utils\ArrayMethods` is an utility class for handy array operations.
+
+### `ArrayMethods::trim()`
+___
+
+```php
+public static string trim(array $array)
+```
+
+Trims every element of the provided array.
+
+ Parameters   | Type     | Description 
+--------------|----------|-------------
+ *`$array`*  | `array` | The source array with items to trim.
+
+Return       | Description
+------------ | -----------
+`array` | A copy of the given array with all items trimmed.
