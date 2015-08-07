@@ -1,30 +1,13 @@
 ---
-layout: base
+layout: home
 title: Home
-generator: pagination
-pagination:
-    max_per_page: 3
-use:
-    - posts
 activeMenu: home
 ---
 
 <!-- Main component for a primary marketing message or call to action -->
-<div class="jumbotron">
-    <h1>
-        <img src="{{ site.url }}/images/logo.png" alt="Slick logo">
-        Slick Framework
-    </h1>
-    <p>Slick is a PHP 5.4+ MVC framework and tool set that aim to be simple robust and cool to work with.<br>
-        The goal is to create a PHP tool set that can be used to develop applications with agile methodologies like SCRUM or KANBAN in mind.</p>
-    <p>
-        <a class="btn btn-lg btn-success" href="{{ site.url }}" role="button">
-            <i class="fa fa-graduation-cap"></i>
-            Getting started
-        </a>
-    </p>
+<div class="text-center">
+    <img src="https://storage.googleapis.com/support-kms-prod/SNP_3094702_en_v0">
 </div>
-
 <section class="features">
     <header>
         <h2>Features</h2>
@@ -32,69 +15,92 @@ activeMenu: home
     <main>
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                <h3>Easy configuration</h3>
-                <p>You use plain PHP arrays to set your application configuration. Extend it if you want to implement a different configuration format or service.</p>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                <h3>Form building</h3>
-                <p>Simply create a Form object, define its field elements, validate and filter chains and render it in your view. All HTML will be created for you.</p>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                <h3>Simple ORM</h3>
-                <p>A very simple and lightweight ORM component that uses PDO for database access. It implement the Active Record design pattern.</p>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                <h3>Data Filters/Validators</h3>
-                <p>A very handy API to filter and validate data. This components define simple interfaces that you can use to implement your own filter and/or validator.</p>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                <h3>Flexible template engine</h3>
-                <p>The default template engine uses <a href="http://twig.sensiolabs.org">Twig</a> to render its view, a very powerful peach of software.</p>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                <h3>BDD and TDD aware</h3>
-                <p>Slick uses the <a href="http://codeception.com">Codeception Test Framework</a> on all its tests.</p>
-            </div>
-        </div>
-    </main>
-</section>
-
-<section class="latest-news">
-    <header>
-        <h2>Latest news</h2>
-    </header>
-    <main>
-        <div class="row">
-            <div class="col-sm-12 col-xs-12 col-md-7 col-lg-7">
-                {% for post in page.pagination.items %}
-                <article>
-                    <header>
-                        <h2><a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a></h2>
-                    </header>
-                    <div>
-                        {{ post.blocks.content|raw }}
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <strong><i class="fa fa-coffee"></i> Easy configuration</strong>
                     </div>
-                    {% if post.meta.tags %}
-                    <p class="tags">
-                        Tags:
-                        {% for tag in post.meta.tags %}
-                        <a href="{{ site.url }}/blog/tags/{{ tag|url_encode(true) }}">{{ tag }}</a>{% if not loop.last %}, {% endif %}
-                        {% endfor %}
-                    </p>
-                    {% endif %}
-                </article>
-                {% endfor %}
+                    <div class="panel-body">
+                        <p>
+                            You use plain PHP arrays to set your application configuration.
+                            Extend it if you want to implement a different configuration format
+                            or service.
+                        </p>
+                    </div>
+                </div>
             </div>
-            <div class="col-sm-12 col-xs-12 col-md-5 col-lg-5">
-                <a class="twitter-timeline"  href="https://twitter.com/filipe_m_silva" data-widget-id="576199927128289280">Tweets by @filipe_m_silva</a>
-                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <strong><i class="fa fa-puzzle-piece"></i> Form building</strong>
+                    </div>
+                    <div class="panel-body">
+                        <p>
+                            Simply create a Form object, define its field elements,
+                            validate and filter chains and render it in your view.
+                            All HTML will be created for you.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <strong><i class="fa fa-database"></i> Simple ORM</strong>
+                    </div>
+                    <div class="panel-body">
+                        <p>
+                            A very simple and lightweight ORM component that uses PDO
+                            for database access. It implement the Active Record
+                            design pattern.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
 
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <strong><i class="fa fa-filter"></i> Data Filters/Validators</strong>
+                    </div>
+                    <div class="panel-body">
+                        <p>
+                            A very handy API to filter and validate data. This components
+                            define simple interfaces that you can use to implement your
+                            own filter and/or validator.
+                        </p>
+                    </div>
+                </div>
 
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <strong><i class="fa fa-leaf"></i> Flexible template engine</strong>
+                    </div>
+                    <div class="panel-body">
+                        <p>
+                            The default template engine uses
+                            <a href="http://twig.sensiolabs.org">Twig</a> to render its view,
+                            a very powerful piece of software.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <strong><i class="fa fa-github"></i> Open source</strong>
+                    </div>
+                    <div class="panel-body">
+                        <p>
+                            You are welcome to use, add or fork this PHP library.
+                            It has a very flexible licence even for commercial use.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 </section>
