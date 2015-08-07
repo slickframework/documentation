@@ -8,12 +8,14 @@
             <option value="/packages/common/annotations" {{ page.contentsMenu == 'common/annotations' ? 'selected' }}>Annotations</option>
             <option value="/packages/common/custom-annotations" {{ page.contentsMenu == 'common/custom-annotations' ? 'selected' }}>Custom annotations</option>
             <option value="/packages/common/utilities" {{ page.contentsMenu == 'common/utilities-menu' ? 'selected' }}>Utilities</option>
+            <option value="/packages/common/enumerations" {{ page.contentsMenu == 'common/enumerations-menu' ? 'selected' }}>Enumerations</option>
         </optgroup>
 
         <optgroup label="Database Package">
             <option value="/packages/database" {{ page.contentsMenu == 'database/adapter' ? 'selected' }}>Database adapter</option>
             <option value="/packages/database/sql" {{ page.contentsMenu == 'database/sql' ? 'selected' }}>Creating queries</option>
             <option value="/packages/database/crud" {{ page.contentsMenu == 'database/crud' ? 'selected' }}>Insert, update and delete</option>
+            <option value="/packages/database/ddl" {{ page.contentsMenu == 'database/ddl' ? 'selected' }}>DDL statements</option>
 
         </optgroup>
     </select>

@@ -6,6 +6,9 @@ contentsMenu: common/utilities-menu
 previous:
     url: /packages/common/custom-annotations
     title: Annotations
+next:
+    url: /packages/common/enumerations
+    title: Enumerations
     
 ---
 
@@ -120,7 +123,7 @@ Return       | Description
 ___
 
 ```php
-public static string trim(array $array)
+public static array trim(array $array)
 ```
 
 Trims every element of the provided array.
@@ -132,3 +135,21 @@ Trims every element of the provided array.
 Return       | Description
 ------------ | -----------
 `array` | A copy of the given array with all items trimmed.
+
+
+### `ArrayMethods::clean()`
+___
+
+```php
+public static array clean(array $array)
+```
+
+Returns a copy of the given array without empty items.
+
+ Parameters   | Type     | Description 
+--------------|----------|-------------
+ *`$array`*  | `array` | The data array with empty items to clean.
+
+Return       | Description
+------------ | -----------
+`array` | A copy of given array without empty items.
