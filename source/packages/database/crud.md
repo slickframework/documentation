@@ -64,7 +64,7 @@ $insert = Sql::create($adapter)
 The code above will create the following SQL:
 
 ```sql
-INSERT INTO uses (username, mail)
+INSERT INTO users (username, mail)
 VALUES ('joe', 'joe@example.com');
 ```
 
