@@ -6,7 +6,9 @@ contentsMenu: database/ddl
 previous:
     url: /packages/database/crud
     title: Insert, update and delete
-
+next:
+    url: /packages/database/schema
+    title: Schema creation
 ---
 
 <div id="create-table"></div>
@@ -69,6 +71,9 @@ CREATE TABLE uses (
     active BOOLEAN
 );    
 ```
+
+<div id="column-types"></div>
+
 As you can see creating a table is in fact very similar to writing a SQL CREATE TABLE statement:
 You set the tables name ans add the columns you need.
 
