@@ -11,6 +11,11 @@
             <option value="/packages/common/enumerations" {{ page.contentsMenu == 'common/enumerations-menu' ? 'selected' }}>Enumerations</option>
         </optgroup>
 
+        <optgroup label="Configuration Package">
+            <option value="/packages/configuration" {{ page.contentsMenu == 'configuration/base-menu' ? 'selected' }}>Working with configuration files</option>
+
+        </optgroup>
+
         <optgroup label="Database Package">
             <option value="/packages/database" {{ page.contentsMenu == 'database/adapter' ? 'selected' }}>Database adapter</option>
             <option value="/packages/database/sql" {{ page.contentsMenu == 'database/sql' ? 'selected' }}>Creating queries</option>
@@ -19,6 +24,8 @@
             <option value="/packages/database/schema" {{ page.contentsMenu == 'database/schema' ? 'selected' }}>Schema creation</option>
 
         </optgroup>
+
+
     </select>
     {% if page.contentsMenu %}
     <hr>
