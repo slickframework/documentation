@@ -66,3 +66,128 @@ But lets first understand what a definition is and how to set them in your conta
 
 ---
 
+Definitions are entries in an array that instruct the container on how to create the
+correspondent object instance or value.
+
+Every container MUST have a definition list (associative array) to be crated and you
+SHOULD always use the `Slick\Di\ContainerBuilder` to create your container.
+
+Lets create our `dependencies.php` file that will container our dependencies definitions:
+
+```php
+<?php
+
+/**
+ * Dependency injection definitions file
+ */
+ 
+return [
+    'timezone' => 'UTC',
+    'config' => function() {
+        return Configuration::get('config');
+    },
+]; 
+```
+
+<div class="alert alert-info" role="alert">
+    <h4>
+        <i class="fa fa-info "></i>
+        Why use PHP arrays?
+    </h4>
+    
+    This is a very simple answer. If you use other markup/style to create the
+    container definitions file, for example <code>.ini</code> or <code>.yml</code>
+    you will need to parse those settings and then apply them.<br>
+    If you use PHP arrays there is no need to parse it and the code can be directly
+    executed, enhancing performance. 
+</div>
+
+### Value definitions
+
+---
+
+A value or scalar definition is used as is. The following example is a value definition:
+```php
+<?php
+
+/**
+ * Dependency injection value definition example
+ */
+return [
+    'timezone' => 'UTC'
+];
+```
+
+Value definitions are good to store application wide constants.
+
+### Callable definitions
+
+---
+
+With callable definitions you can compute and/or control the object or value creation:
+```php
+<?php
+
+/**
+ * Dependency injection callable definition example
+ */
+return [
+    'config' => function() {
+        return Configuration::get('config');
+    }
+];
+```
+
+### Alias definitions
+
+---
+
+Alias definitions are a shortcut for already defined entries:
+
+```php
+<?php
+
+/**
+ * Dependency injection alias definition example
+ */
+return [
+    'config' => @general.config
+];
+```
+
+The alias point to an entry key and are always prefixed with an `@`
+
+### Object definitions
+
+---
+
+Objects its what makes DiC very handy, and fun! To create an object definition you
+need to use an helper class: `Slick\Di\Definition\ObjectDefinition`
+
+Lets see an example:
+```php
+<?php
+
+use Slick\Di\Definition\ObjectDefinition;
+
+/**
+ * Dependency injection object definition example
+ */
+return [
+    'siteName' => 'Example site',
+    'config' => function() {
+        return Configuration::get('config');
+    },
+    'search.service' => ObjectDefinition::create('Services\SearchService')
+        ->setConstructArgs(['@config'])
+        ->setMethod('setMode', ['simple'])
+        ->setProperty('siteName', '@siteName')
+];
+```
+
+To create an object you usually call its constructor with dependent arguments, call some
+methods and/or update properties if needed. This is what the 
+`Slick\Di\Definition\ObjectDefinition` tries the mimic.
+
+In the above example we use all possible definitions.
+
