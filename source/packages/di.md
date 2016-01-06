@@ -31,10 +31,10 @@ about on DI](http://fabien.potencier.org/what-is-dependency-injection.html).
 Dependency injection and dependency injection containers are tow different things.
 Dependency injection is a design pattern that implements
 [inversion of control](https://en.wikipedia.org/wiki/Inversion_of_control) for
-resolving dependencies. On the other hand _Dependency Injection Container_ (DiC) is a tool
+resolving dependencies. On the other hand _Dependency Injection Container_ is a tool
 that will help you create, reuse and inject dependencies.
 
-DiC can also be used to store object instances that you create and values that you may
+A dependency container can also be used to store object instances that you create and values that you may
 need to use repeatedly like configuration settings.
 
 Lets look at a very simple example:
@@ -51,13 +51,14 @@ $container = (new ContainerBuilder($definitions))->getContainer();
 print $container->get('config.environment'); // Will print 'develop'
 ```
 
-In this code example we create a DiC with a single definition under the `config.environment` key/name
-and retrieve it latter. For that we use the `ContainerBuilder` factory that need an array or a file
-name with an array of definitions that can be use to create our dependencies.
+In this code example we create a dependency container with a single definition under
+the `config.environment` key/name and retrieve it latter. For that we use the
+`ContainerBuilder` factory that need an array or a file name with an array of
+definitions that can be used to create our dependencies.
 
 This is not a big deal so far as you are probably saying that you can achieve the same result with a 
 global variable. In fact storing values or object instances in a container is the simplest feature
-of a DiC and a _side effect_ as the main goal is to store definitions that can be used to create
+of a dependency container and a _side effect_ as the main goal is to store definitions that can be used to create
 the real objects when we need them.
 
 But lets first understand what a definition is and how to set them in your container.
@@ -69,7 +70,7 @@ But lets first understand what a definition is and how to set them in your conta
 Definitions are entries in an array that instruct the container on how to create the
 correspondent object instance or value.
 
-Every container MUST have a definition list (associative array) to be crated and you
+Every container MUST have a definition list (associative array) to be created and you
 SHOULD always use the `Slick\Di\ContainerBuilder` to create your container.
 
 Lets create our `dependencies.php` file that will contain our dependencies definitions:
@@ -102,6 +103,8 @@ return [
     executed, enhancing performance. 
 </div>
 
+<div id="definitions-value"></div>
+
 ### Value definitions
 
 ---
@@ -120,6 +123,8 @@ return [
 
 Value definitions are good to store application wide constants.
 
+<div id="definitions-callable"></div>
+
 ### Callable definitions
 
 ---
@@ -137,6 +142,8 @@ return [
     }
 ];
 ```
+
+<div id="definitions-alias"></div>
 
 ### Alias definitions
 
@@ -157,11 +164,13 @@ return [
 
 The alias points to an entry key and are always prefixed with an `@`
 
+<div id="definitions-object"></div>
+
 ### Object definitions
 
 ---
 
-Objects its what makes DiC very handy, and fun! To create an object definition you
+Objects its what makes dependency containers very handy, and fun! To create an object definition you
 need to use an helper class: `Slick\Di\Definition\ObjectDefinition`
 
 Lets see an example:
@@ -190,6 +199,8 @@ methods and/or update properties if needed. This is what the
 `Slick\Di\Definition\ObjectDefinition` tries the mimic.
 
 In the above example we use all possible definitions.
+
+<div id="constructor-injection"></div>
 
 ## Constructor injection
 
